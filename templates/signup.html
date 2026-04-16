@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 85vh;">
+    <div class="card job-card p-5 shadow-lg glass-card" style="max-width: 500px; width: 100%; border-radius: 25px;" data-aos="fade-up">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold">Create Account</h2>
+            <p class="text-muted">Join the most aesthetic job portal</p>
+        </div>
+
+        <form action="/signup" method="POST">
+            <div class="mb-3">
+                <label class="form-label small fw-bold">Full Name</label>
+                <input type="text" name="username" class="form-control rounded-pill px-3" placeholder="John Doe" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label small fw-bold">Email Address</label>
+                <input type="email" name="email" class="form-control rounded-pill px-3" placeholder="john@example.com" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label small fw-bold">I am a...</label>
+                <select name="role" class="form-select rounded-pill px-3">
+                    <option value="Seeker">Job Seeker (Looking for work)</option>
+                    <option value="Employer">Employer (Hiring talent)</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="form-label small fw-bold">Password</label>
+                <input type="password" name="password" class="form-control rounded-pill px-3" placeholder="••••••••" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary w-100 rounded-pill py-2 fw-bold shadow">
+                Get Started
+            </button>
+        </form>
+        
+        <div class="text-center mt-4">
+            <span class="small text-muted">Already have an account? <a href="/login" class="text-primary text-decoration-none fw-bold">Login</a></span>
+        </div>
+    </div>
+</div>
+{% endblock %}

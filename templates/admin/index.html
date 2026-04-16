@@ -1,0 +1,58 @@
+{% extends 'admin/master.html' %}
+{% block body %}
+<div class="container-fluid mt-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="fw-bold">System <span style="color: #007bff;">Overview</span></h1>
+            <p class="text-muted">Welcome to the JobFlow Master Control Panel.</p>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 p-3" style="border-left: 5px solid #007bff !important;">
+                <h6 class="text-muted small fw-bold">TOTAL USERS</h6>
+                <h2 class="fw-bold">{{ user_count }}</h2>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 p-3" style="border-left: 5px solid #28a745 !important;">
+                <h6 class="text-muted small fw-bold">ACTIVE JOBS</h6>
+                <h2 class="fw-bold">{{ job_count }}</h2>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 p-3" style="border-left: 5px solid #ffc107 !important;">
+                <h6 class="text-muted small fw-bold">EMPLOYERS</h6>
+                <h2 class="fw-bold">{{ employer_count }}</h2>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 p-3" style="border-left: 17px solid #17a2b8 !important;">
+                <h6 class="text-muted small fw-bold">JOB SEEKERS</h6>
+                <h2 class="fw-bold">{{ seeker_count }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="card border-0 shadow-sm p-4 bg-dark text-white rounded-4">
+                <h4 class="fw-bold">Quick Management</h4>
+                <p class="text-white-50">Use the navigation bar above to Edit, Create, or Remove entries from the database directly.</p>
+                <div class="d-flex gap-2">
+                    <a href="/admin/user/" class="btn btn-primary btn-sm">Manage Users</a>
+                    <a href="/admin/job/" class="btn btn-outline-light btn-sm">Review Jobs</a>
+                    <a href="/" class="btn btn-link text-white text-decoration-none btn-sm">Back to Website →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Styling for the internal admin panel only */
+    .card { border-radius: 15px; transition: transform 0.2s; }
+    .card:hover { transform: translateY(-5px); }
+</style>
+{% endblock %}

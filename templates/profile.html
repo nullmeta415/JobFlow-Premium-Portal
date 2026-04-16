@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8" data-aos="fade-up" data-aos-duration="800">
+            <div class="card job-card post-job-card border-0 shadow-lg overflow-hidden">
+                <div style="height: 150px; background: linear-gradient(45deg, #007bff, #00d4ff);"></div>
+                
+                <div class="card-body p-5 pt-0">
+                    <div class="text-center" style="margin-top: -75px;">
+                        <div class="rounded-circle bg-white p-2 d-inline-block shadow">
+                            <img src="https://ui-avatars.com/api/?name={{ user.username }}&size=150&background=random" 
+                                 class="rounded-circle" alt="User Avatar">
+                        </div>
+                        <h2 class="fw-bold mt-3">{{ user.username }}</h2>
+                        <span class="badge rounded-pill px-4 py-2 bg-soft-primary text-primary" 
+                              style="background: rgba(13, 110, 253, 0.1); border: 1px solid rgba(13, 110, 253, 0.1);">
+                            {{ user.role }}
+                        </span>
+                    </div>
+
+                    <hr class="my-5 opacity-10">
+
+                    <div class="row g-4 text-center">
+                        <div class="col-md-6">
+                            <h6 class="text-muted text-uppercase small fw-bold">Email Address</h6>
+                            <p class="fw-semibold">{{ user.email }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-muted text-uppercase small fw-bold">Account Status</h6>
+                            <p class="text-success fw-bold">● Active</p>
+                        </div>
+                    </div>
+
+                    {% if user.role == 'Employer' %}
+                    <div class="mt-5 p-4 rounded-4 bg-light border-0" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="icon-box-sm bg-primary text-white rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <i class="bi bi-briefcase"></i>
+                            </div>
+                            <h5 class="fw-bold mb-0">Employer Dashboard</h5>
+                        </div>
+                        <p class="small text-muted mb-4">You have the authority to manage listings and find top talent.</p>
+                        <a href="{{ url_for('post_job') }}" class="btn btn-primary btn-join rounded-pill px-5 py-2 shadow-sm">
+                            Post New Job 🚀
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

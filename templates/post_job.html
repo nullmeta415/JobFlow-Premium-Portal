@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8" data-aos="fade-up" data-aos-duration="800">
+            <div class="card job-card post-job-card p-5 shadow-lg glass-card border-0">
+                <div class="mb-4">
+                    <h2 class="fw-bold">Post a <span class="text-primary">New Job</span></h2>
+                    <p class="text-muted">Fill in the details to find your next great hire.</p>
+                </div>
+
+                <form method="POST">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold small">Job Title</label>
+                            <input type="text" name="title" class="form-control rounded-pill px-3" placeholder="e.g. Software Engineer" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold small">Company Name</label>
+                            <input type="text" name="company" class="form-control rounded-pill px-3" placeholder="e.g. TechCorp" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold small">Location</label>
+                            <input type="text" name="location" class="form-control rounded-pill px-3" placeholder="e.g. Remote / New York" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold small">Salary Range</label>
+                            <input type="text" name="salary" class="form-control rounded-pill px-3" placeholder="e.g. $80k - $120k">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label fw-bold small">Category</label>
+                            <select name="category" class="form-select rounded-pill px-3">
+                                <option value="Development">Development</option>
+                                <option value="Design">Design</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Data Science">Data Science</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label fw-bold small">Job Description</label>
+                            <textarea name="description" class="form-control" rows="5" style="border-radius: 15px;" placeholder="Describe the role and requirements..." required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-primary btn-join w-100 py-3 rounded-pill fw-bold shadow">
+                            Publish Listing 🚀
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

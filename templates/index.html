@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero-section py-5 d-flex align-items-center">
+    <div class="container mt-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                <h1 class="display-3 fw-bold mb-3">Unlock Your <span class="text-primary">Future</span> Career.</h1>
+                <p class="lead text-muted mb-5">Explore thousands of job opportunities with premium insights and verified employer listings.</p>
+
+                <div class="search-box p-3 mb-4 shadow-lg glass-card" style="border-radius: 50px;">
+                    <form action="/search" method="GET" class="d-flex align-items-center">
+                        <input type="text" name="q" class="form-control border-0 bg-transparent ms-3" placeholder="Job title, keywords...">
+                        <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill shadow-sm">Find Jobs</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-lg-6 d-none d-lg-block" data-aos="zoom-in" data-aos-duration="1200">
+                <div class="hero-3d-card job-card p-5 text-center shadow-lg border-0">
+                    <div class="icon-box mb-4 mx-auto shadow-sm">🚀</div>
+                    <h3 class="fw-bold">New Opportunities</h3>
+                    <p class="text-muted">Over 500+ jobs posted today in your area.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container py-5">
+    <h2 class="fw-bold mb-4">Latest <span class="text-primary">Opportunities</span></h2>
+    <div class="row g-4">
+        {% for job in jobs %}
+        <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
+            <div class="card job-card h-100 p-4 border-0 shadow-sm">
+                <div class="badge rounded-pill px-3 py-2 text-primary mb-3" style="background: rgba(13, 110, 253, 0.1);">
+                    {{ job.category if job.category else 'General' }}
+                </div>
+                <h4 class="fw-bold mb-1">{{ job.title }}</h4>
+                <p class="text-primary fw-semibold mb-3">{{ job.company }}</p>
+                <div class="small text-muted mb-4">📍 {{ job.location }} | 💰 {{ job.salary if job.salary else 'Negotiable' }}</div>
+                <a href="{{ url_for('job_details', job_id=job.id) }}" class="btn btn-primary w-100 py-2 rounded-pill shadow-sm">
+                    View Details
+                </a>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-12 text-center py-5">
+            <h3 class="text-muted">
+                {% if query %}
+                    No jobs available yet for "{{ query }}"
+                {% else %}
+                    No jobs available yet
+                {% endif %}
+            </h3>
+            {% if query %}
+                <a href="/" class="btn btn-link text-decoration-none mt-2">Clear search and view all jobs</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
